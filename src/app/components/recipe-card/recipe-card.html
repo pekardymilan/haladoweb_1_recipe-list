@@ -1,0 +1,24 @@
+<!-- In angular the best practice is to split the UI into reusable small components, each component
+should deal with only it's own problems, this component is the perfect example of a reusable card
+component which displays the items of an array, and deal with select, update etc logic  -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <mat-checkbox (change)="onSelect()"></mat-checkbox>
+      {{ recipe().name }}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ recipe().description }}</p>
+  </mat-card-content>
+  <mat-card-footer [style.margin-inline]="'5px'">
+    <mat-chip-set>
+      @for(ingredient of recipe().ingredients; track ingredient.name){
+      <mat-chip>
+        {{ ingredient.name }} x {{ ingredient.quantity }}
+        {{ ingredient.unitOfMeasurement }}
+      </mat-chip>
+      }
+    </mat-chip-set>
+  </mat-card-footer>
+</mat-card>
